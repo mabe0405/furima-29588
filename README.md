@@ -22,17 +22,17 @@
 
 ## items テーブル
 
-| Column             | Type       | Options                        |
-| ---------------    | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| description        | text       | null: false                    |
-| category_id        | string     | null: false                    |
-| status_id          | integer    | null: false                    |
-| shipping_cost_id   | integer    | null: false                    |
-| shipping_source_id | integer    | null: false                    |
-| delivery_date_id   | integer    | null: false                    |
-| price              | integer    | null: false                    |
-| user               | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| name            | string     | null: false                    |
+| description     | string     | null: false                    |
+| category        | string     | null: false                    |
+| status          | string     | null: false                    |
+| shipping_cost   | string     | null: false                    |
+| shipping_source | string     | null: false                    |
+| delivery_date   | string     | null: false                    |
+| price           | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -57,12 +57,12 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| postal_code  | string    | null: false                    |
+| postal_code  | integer    | null: false                    |
 | prefecture   | string     | null: false                    |
 | city         | string     | null: false                    |
 | address      | string     | null: false                    |
 | building     | string     |                                |
-| phone_number | string    | null: false                    |
+| phone_number | integer    | null: false                    |
 | purchase     | references | null: false, foreign_key: true |
 
 
