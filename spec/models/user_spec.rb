@@ -16,10 +16,17 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Nickname can't be blank")
     end
+
     it 'emailが空だと保存できないこと' do
       @user.email = nil
       @user.valid?
       expect(@user.errors.full_messages).to include("Email can't be blank")
+    end
+
+    it 'emailに＠が存在しないと保存できないこと' do
+      @user.email = "aaaaa"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Email is invalid")
     end
     
     it "重複したemailが存在する場合登録できないこと" do
