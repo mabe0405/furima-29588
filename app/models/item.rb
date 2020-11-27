@@ -14,11 +14,13 @@ with_options presence: true do
   validates :image
   validates :name
   validates :description
-  validates :category_id, numericality: { other_than: 1 }
-  validates :shipping_cost_id, numericality: { other_than: 1 }
-  validates :shipping_source_id, numericality: { other_than: 1 }
-  validates :delivery_date_id, numericality: { other_than: 1 }
-  validates :price,format: { with: 3[0-9][0-9]|9[0-9][0-9][0-9][0-9][0-9][0-9] ,message: 'Out of setting range' }
+  validates :category_id, numericality: { other_than: 1 ,message: 'Select'}
+  validates :status_id, numericality: { other_than: 1 ,message: 'Select'}
+  validates :shipping_cost_id, numericality: { other_than: 1  ,message: 'Select'}
+  validates :shipping_source_id, numericality: { other_than: 1  ,message: 'Select'}
+  validates :delivery_date_id, numericality: { other_than: 0  ,message: 'Select'}
+  validates :price, numericality: { message: 'Half-width number'}
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999,message: 'Out of setting range'}
 end
 
 
