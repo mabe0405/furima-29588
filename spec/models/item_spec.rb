@@ -46,14 +46,14 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Shipping cost Select')
     end
 
-    it 'shipping_source_idが1(未選択)だと保存できないこと' do
-      @item.shipping_source_id = 1
+    it 'shipping_source_idが0(未選択)だと保存できないこと' do
+      @item.shipping_source_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include('Shipping source Select')
     end
 
-    it 'delivery_date_idが0(未選択)だと保存できないこと' do
-      @item.delivery_date_id = 0
+    it 'delivery_date_idが1(未選択)だと保存できないこと' do
+      @item.delivery_date_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Delivery date Select')
     end
@@ -70,8 +70,14 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include('Price Half-width number')
     end
 
-    it 'priceが300~9,999,999円でないと保存できないこと' do
+    it 'priceが299円以下だと保存できないこと' do
       @item.price = 1
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Price Out of setting range')
+    end
+
+    it 'priceが1,000,000円以上だと保存できないこと' do
+      @item.price = 1000000000
       @item.valid?
       expect(@item.errors.full_messages).to include('Price Out of setting range')
     end
