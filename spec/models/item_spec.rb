@@ -31,31 +31,31 @@ RSpec.describe Item, type: :model do
     it 'category_idが1(未選択)だと保存できないこと' do
       @item.category_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category Select")
+      expect(@item.errors.full_messages).to include('Category Select')
     end
 
     it 'status_idが1(未選択)だと保存できないこと' do
       @item.status_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Status Select")
+      expect(@item.errors.full_messages).to include('Status Select')
     end
 
     it 'shipping_cost_idが1(未選択)だと保存できないこと' do
       @item.shipping_cost_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping cost Select")
+      expect(@item.errors.full_messages).to include('Shipping cost Select')
     end
 
     it 'shipping_source_idが1(未選択)だと保存できないこと' do
       @item.shipping_source_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping source Select")
+      expect(@item.errors.full_messages).to include('Shipping source Select')
     end
 
     it 'delivery_date_idが0(未選択)だと保存できないこと' do
       @item.delivery_date_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery date Select")
+      expect(@item.errors.full_messages).to include('Delivery date Select')
     end
 
     it 'priceが空だと保存できないこと' do
@@ -67,20 +67,19 @@ RSpec.describe Item, type: :model do
     it 'priceが数字でないと保存できないこと' do
       @item.price = 'aaaaaa'
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price Half-width number")
+      expect(@item.errors.full_messages).to include('Price Half-width number')
     end
 
     it 'priceが300~9,999,999円でないと保存できないこと' do
       @item.price = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include("Price Out of setting range")
+      expect(@item.errors.full_messages).to include('Price Out of setting range')
     end
 
     it 'userが紐付いていないと保存できないこと' do
       @item.user = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include("User must exist")
+      expect(@item.errors.full_messages).to include('User must exist')
     end
-
   end
 end
