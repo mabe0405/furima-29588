@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
+  has_one :purchase
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
@@ -19,7 +20,7 @@ class Item < ApplicationRecord
       validates :shipping_cost_id
       validates :delivery_date_id
     end
-    validates :shipping_source_id,numericality: { other_than: 0, message: 'Select' }
+    validates :shipping_source_id, numericality: { other_than: 0, message: 'Select' }
     validates :price, numericality: { message: 'Half-width number' }
     validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
   end
