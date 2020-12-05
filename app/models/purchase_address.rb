@@ -1,6 +1,6 @@
 class PurchaseAddress
   include ActiveModel::Model
-  attr_accessor :nickname, :email, :encrypted_password, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_date, :name, :description, :category_id, :status_id, :shipping_cost_id, :shipping_source_id, :delivery_date_id, :price, :user_id, :item_id, :token, :postal_code, :prefecture_id, :city, :address, :building, :phone_number, :user_id, :item_id
+  attr_accessor :price,:user_id, :item_id, :token, :postal_code, :prefecture_id, :city, :address, :building, :phone_number
 
   with_options presence: true do
     validates :token
@@ -11,6 +11,7 @@ class PurchaseAddress
     validates :city
     validates :address
     validates :phone_number, numericality: { only_integer: true, message: 'Input only number' }
+    validates :phone_number, length: { maximum:11 }
   end
 
   def save
