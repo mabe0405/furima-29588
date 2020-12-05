@@ -50,11 +50,6 @@ RSpec.describe PurchaseAddress, type: :model do
        @purchase_address.valid?
        expect(@purchase_address.errors.full_messages).to include('Phone number Input only number')
       end
-      it 'phone_numberが12文字以上だと保存できないこと' do
-        @purchase_address.phone_number = '111111111111'
-        @purchase_address.valid?
-        expect(@purchase_address.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)')
-       end
       it 'userが紐付いていないと保存できないこと' do
        @purchase_address.user_id = nil
        @purchase_address.valid?
