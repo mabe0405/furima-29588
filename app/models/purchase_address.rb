@@ -14,9 +14,7 @@ class PurchaseAddress
   end
 
   def save
-    user = User.create(nickname: nickname, email: email, encrypted_password: encrypted_password, last_name: last_name, first_name: first_name, last_name_kana: last_name_kana, first_name_kana: first_name_kana, birth_date: birth_date)
-    item = Item.create(name: name, description: description, category_id: category_id, status_id: status_id, shipping_cost_id: shipping_cost_id, shipping_source_id: shipping_source_id, delivery_date_id: delivery_date_id, price: price, user_id: user.id)
-    purchase = Purchase.create(user_id: user_id, item_id: item_id, token: token)
+    purchase = Purchase.create(user_id: user_id, item_id: item_id)
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number: phone_number, purchase_id: purchase.id)
   end
 end
