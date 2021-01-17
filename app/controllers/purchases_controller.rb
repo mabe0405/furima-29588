@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
 
   def index
     if @item.user == current_user || @item.purchase.present?
-      redirect_to root_path
+      redirect_to items_path
     end
     @purchase_address = PurchaseAddress.new
   end
@@ -14,7 +14,7 @@ class PurchasesController < ApplicationController
     if @purchase_address.valid?
       pay_item
       @purchase_address.save
-      redirect_to root_path
+      redirect_to items_path
     else
       render action: :index
     end
